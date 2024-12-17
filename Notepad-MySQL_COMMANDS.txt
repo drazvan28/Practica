@@ -1,0 +1,152 @@
+MySQL all things that i've done 
+
+CREATE TABLE user (
+    user_id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255),
+    age INT
+);
+
+DROP TABLE firma_transport
+;
+
+SELECT 
+    *
+FROM
+    user;
+
+INSERT INTO user(name, age) 
+VALUES
+("Andrei", 19),
+("Roxana", 20),
+("Robert", 16);
+
+
+
+    
+	CREATE TABLE employee (
+    user_id INT PRIMARY KEY AUTO_INCREMENT,
+    salary INT,
+    first_name VARCHAR(255),
+    last_name VARCHAR(255),
+    position VARCHAR(255)
+);
+CREATE TABLE vehicle (
+    vehicle_id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT,
+    FOREIGN KEY (user_id)
+        REFERENCES employee (user_id),
+    brand VARCHAR(255),
+    price INT,
+    year_of_production INT
+);
+     
+SELECT * FROM employee;
+
+INSERT INTO employee(salary, first_name, last_name, position)
+VALUES 
+(2500.00, "Ionel", "Popescu", "Sofer"),
+(3000.00, "Madalin", "Iacobescu", "Dispecer"),
+(2400.00, "Andrei", "Craciun", "Sofer"),
+(4000.00, "Emanuel", "Ionescu", "Manager");
+
+SELECT * FROM vehicle;
+
+INSERT INTO vehicle(user_id, brand, price, year_of_production)
+VALUES
+(1, "Volvo", 90000.00, 2021),
+(2, "Skoda", 32000.00, 2018),
+(3, "Mercrdes", 50000.00, 2022),
+(4, "Scania", 100000.00, 2020); 
+
+CREATE TABLE vehicle_asigment (
+vehicle_asigment_id int primary key auto_increment,
+vehicle_id int,
+foreign key (vehicle_id) references vehicle (vehicle_id),
+user_id int,
+foreign key (user_id) references employee (user_id)
+  
+);
+
+SELECT 
+    *
+FROM
+    vehicle_asigment;
+    
+    
+    Insert into vehicle_asigment(user_id, vehicle_id)
+    VALUES
+    (1,1),
+    (2,4),
+    (3,2),
+    (4,3);
+    
+    
+   UPDATE vehicle 
+SET 
+    brand = "Mercedes"
+WHERE
+    vehicle_id = 3;
+    
+    select * FROM vehicle;
+    
+   UPDATE employee 
+SET 
+    first_name = 'Marcel'
+WHERE
+    user_id = 4;
+    
+    select* from employee;    
+    
+   UPDATE vehicle 
+SET 
+    brand = 'Audi'
+WHERE
+    user_id = 1;
+    
+ SELECT 
+    *
+FROM
+    vehicle;
+    
+    
+ALTER table vehicle 
+add hp INT;    
+
+INSERT INTO vehicle(hp)
+VALUES
+(200),
+(300),
+(205),
+(455);
+
+SELECT * FROM vehicle;
+
+Alter table vehicle
+drop column hp;
+
+drop table vehicle;
+
+drop table vehicle;
+drop table vehicle_asigment;
+
+
+Delete From vehicle
+Where 
+vehicle_id > 4
+;
+
+update vehicle 
+set hp = 240
+where vehicle_id = 1;
+
+update vehicle 
+set hp = 288
+where vehicle_id = 2;
+
+update vehicle 
+set hp = 340
+where vehicle_id = 3;
+
+
+
+select * from vehicle;
